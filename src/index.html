@@ -9,6 +9,19 @@
     <script nomodule src="/build/demo.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <style>
+      #buttonId::part(button) {
+        background-color: red;
+      }
+    </style>
+    <my-button-component>
+      primary
+    </my-button-component>
+    <my-button-component type="secondary">
+      secondary
+    </my-button-component>
+    <my-button-component id="buttonId">
+      warning
+    </my-button-component>
   </body>
 </html>
