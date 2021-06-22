@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import {Component, Prop, h, Listen} from '@stencil/core';
 import { format } from '../../utils/utils';
 
 @Component({
@@ -27,6 +27,15 @@ export class MyComponent {
   }
 
   render() {
-    return <div>Hello, World! I'm {this.getText()}</div>;
+    return(<div>Hello, World! I'm {this.getText()}
+      <my-dropdown title="Toggle">
+      Hello World
+    </my-dropdown>
+    </div>);
+  }
+
+  @Listen('onToggle') // Listen to the onToggle event from the dropdown component
+  log(event) {
+    console.log(event);
   }
 }

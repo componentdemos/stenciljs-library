@@ -20,6 +20,9 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface MyDropdown {
+        "title": string;
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -28,8 +31,15 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLMyDropdownElement extends Components.MyDropdown, HTMLStencilElement {
+    }
+    var HTMLMyDropdownElement: {
+        prototype: HTMLMyDropdownElement;
+        new (): HTMLMyDropdownElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "my-dropdown": HTMLMyDropdownElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,8 +57,13 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface MyDropdown {
+        "onOnToggle"?: (event: CustomEvent<any>) => void;
+        "title"?: string;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "my-dropdown": MyDropdown;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +71,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-dropdown": LocalJSX.MyDropdown & JSXBase.HTMLAttributes<HTMLMyDropdownElement>;
         }
     }
 }
